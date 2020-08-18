@@ -1,0 +1,13 @@
+cat
+dog
+mat
+ball
+bat
+low
+tick
+kill
+long
+left
+truck
+tow
+what
