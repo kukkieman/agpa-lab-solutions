@@ -1,0 +1,17 @@
+START
+
+1. Input 2D array as grid having 4 values- 'r' for red, 'g' fopr green, 'b' for blue, 'w' for white and '0' for blank which we will use later
+
+2. Run a loop across grid to check for consecutive horizontally adjacent values, if found, go to 3
+
+3. Call function clear_cell() to clear cells with the matches
+
+﻿﻿﻿﻿4. Repeat 2 and 3 for vertical selection
+
+5. Now fill all blank spaces with the corresponding values above the respective cells.
+
+6. Randomly place values in the top layers where '0' still remains.
+
+7. Clear screen and print grid
+
+STOP
