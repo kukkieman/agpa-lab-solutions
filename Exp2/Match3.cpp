@@ -36,19 +36,20 @@ bool any_match_found(char grid[n][m]){
     }
   }
 
-  for(int j=0; j<m; j++){
-   for(int i=0; i<n; i++){
-     int count=0, k=i;
-     do{
-       count++;
-       k++;
-     }while(grid[i][j]==grid[k][j]);
-     if(count>=3){
-       return true;
-     }
-   }
- }
- return false;
+  for(int i=0; i<n; i++){
+    for(int j=0; j<m; j++){
+      int count=0, k=j;
+      do{
+        count++;
+        k++;
+      }while(grid[i][j]==grid[i][k]);
+      if(count>=3){
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 bool is_adj(char grid[n][m], int tx, int ty, int txi, int tyi){
@@ -77,7 +78,7 @@ void output_grid(char grid[n][m]){
     // cout<<alpha++<<" ";
     cout<<i<<" ";
   }
-  cout<<"\n  ";
+  cout<<"\n\n  ";
   for(int i=0; i<n; i++) cout<<"__";
   for(int i=0; i<n; i++){
     cout<<"\n"<<i<<" |";
@@ -114,7 +115,7 @@ void rand_fill(char grid[n][m]){
  }
 }
 
-void clear_cell(char grid[n][m], int count, int i, int j, char mode){
+void clear_block(char grid[n][m], int count, int i, int j, char mode){
  switch(mode){
    case 'h': while(count--){
                grid[i][j++]='0';
@@ -132,7 +133,7 @@ void clear_cell(char grid[n][m], int count, int i, int j, char mode){
 
 void h_check(char grid[n][m]){
   // if(any_match_found(grid))
-  //   clear_cell(grid, count, i, j, 'h');
+  //   clear_block(grid, count, i, j, 'h');
  for(int i=0; i<n; i++){
    for(int j=0; j<m; j++){
      int count=0, k=j;
@@ -141,7 +142,7 @@ void h_check(char grid[n][m]){
        k++;
      }while(grid[i][j]==grid[i][k]);
      if(count>=3){
-       clear_cell(grid, count, i, j, 'h');
+       clear_block(grid, count, i, j, 'h');
      }
    }
  }
@@ -149,7 +150,7 @@ void h_check(char grid[n][m]){
 
 void v_check(char grid[n][m]){
   // if(any_match_found(grid))
-  //   clear_cell(grid, count, i, j, 'h');
+  //   clear_block(grid, count, i, j, 'h');
   for(int j=0; j<m; j++){
    for(int i=0; i<n; i++){
      int count=0, k=i;
@@ -158,7 +159,7 @@ void v_check(char grid[n][m]){
        k++;
      }while(grid[i][j]==grid[k][j]);
      if(count>=3){
-       clear_cell(grid, count, i, j, 'v');
+       clear_block(grid, count, i, j, 'v');
      }
    }
  }
